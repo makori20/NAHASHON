@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-  Container, 
-  Row, 
-  Col, 
-  Card, 
+import {
+  Container,
+  Row,
+  Col,
+  Card,
   Button,
   ListGroup
 } from 'react-bootstrap';
@@ -69,7 +69,7 @@ const Services = () => {
       <h2 className="text-center mb-5 display-3 fw-bold">
         Our <span className="text-primary">Comprehensive Services</span>
       </h2>
-      
+
       <Row className="g-4">
         {serviceCategories.map((category, index) => (
           <Col lg={6} key={index}>
@@ -94,9 +94,9 @@ const Services = () => {
                       ))}
                     </ListGroup>
                     <div className="mt-3">
-                      <Button 
-                        variant="primary" 
-                        size="sm" 
+                      <Button
+                        variant="primary"
+                        size="sm"
                         className="w-100"
                         href="/contact"
                       >
@@ -111,7 +111,8 @@ const Services = () => {
         ))}
       </Row>
 
-      <Card className="border-0 shadow-lg mt-5 bg-gradient-primary">
+      {/* Call-to-Action Section */}
+      <Card className="border-0 shadow-lg mt-5 bg-primary">
         <Card.Body className="text-center p-5 text-white">
           <h3 className="mb-3 display-5 fw-bold">
             <i className="bi bi-headset me-2"></i>
@@ -121,28 +122,28 @@ const Services = () => {
             Contact Mr. Nahashon Mueke today for personalized IT solutions and training programs.
           </p>
           <div className="d-flex flex-wrap gap-3 justify-content-center">
-            <Button 
-              variant="light" 
-              size="lg" 
-              href="/contact" 
+            <Button
+              variant="light"
+              size="lg"
+              href="/contact"
               className="px-4 py-3 fw-bold d-flex align-items-center"
             >
               <i className="bi bi-envelope me-2"></i>
               Email Us
             </Button>
-            <Button 
-              variant="outline-light" 
-              size="lg" 
-              href="tel:+254793642195" 
-              className="px-4 py-3 fw-bold d-flex align-items-center"
+            <Button
+              variant="info"
+              size="lg"
+              href="tel:+254793642195"
+              className="px-4 py-3 fw-bold d-flex align-items-center text-white"
             >
               <i className="bi bi-telephone me-2"></i>
               +254 793 642195
             </Button>
-            <Button 
-              variant="warning" 
-              size="lg" 
-              href="mailto:nasonfastitsolutions780@gmail.com" 
+            <Button
+              variant="warning"
+              size="lg"
+              href="mailto:nasonfastitsolutions780@gmail.com"
               className="px-4 py-3 fw-bold d-flex align-items-center"
             >
               <i className="bi bi-whatsapp me-2"></i>

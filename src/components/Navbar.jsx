@@ -1,35 +1,66 @@
-// components/Navbar.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Nav, Navbar as BSNavbar } from 'react-bootstrap';
-import logo from '../assets/images/logo.jpg'; // Assuming you have a logo image
+import React, { useState, useEffect } from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
 
-const Navbar = () => {
+const CustomNavbar = () => {
+  const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
+
+  const handleNavClick = () => {
+    setExpanded(false); // Collapse menu after clicking
+  };
+
+  // Auto-collapse on route change
+  useEffect(() => {
+    setExpanded(false);
+  }, [location]);
+
   return (
-    <BSNavbar bg="dark" variant="dark" expand="lg" className="mb-4 sticky-top" style={{ borderBottom: '3px solid #0d6efd' }}>
-      <Container>
-        <BSNavbar.Brand as={Link} to="/" className="d-flex align-items-center">
-          <img 
-            src={logo} 
-            alt="NASON IT SOLUTION Logo" 
-            height="40"
-            className="d-inline-block align-top me-2 rounded"
+    <>
+      <Navbar
+        bg="dark"
+        variant="dark"
+        expand="lg"
+        expanded={expanded}
+        fixed="top"
+        className="shadow-sm"
+      >
+        <Container>
+          <Navbar.Brand as={Link} to="/" onClick={handleNavClick}>
+            NASON IT SOLUTION
+          </Navbar.Brand>
+
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={() => setExpanded((prev) => !prev)}
           />
-          <span className="font-weight-bold">NASON IT SOLUTION</span>
-        </BSNavbar.Brand>
-        <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
-        <BSNavbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/" className="mx-2">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about" className="mx-2">About</Nav.Link>
-            <Nav.Link as={Link} to="/services" className="mx-2">Services</Nav.Link>
-            <Nav.Link as={Link} to="/projects" className="mx-2">Projects</Nav.Link>
-            <Nav.Link as={Link} to="/contact" className="mx-2">Contact</Nav.Link>
-          </Nav>
-        </BSNavbar.Collapse>
-      </Container>
-    </BSNavbar>
+
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto text-center">
+              <Nav.Link as={Link} to="/" onClick={handleNavClick}>
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about" onClick={handleNavClick}>
+                About
+              </Nav.Link>
+              <Nav.Link as={Link} to="/services" onClick={handleNavClick}>
+                Services
+              </Nav.Link>
+              <Nav.Link as={Link} to="/projects" onClick={handleNavClick}>
+                Projects
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contact" onClick={handleNavClick}>
+                Contact
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Spacer to push content below the fixed navbar */}
+      <div style={{ height: '70px' }} />
+    </>
   );
 };
 
-export default Navbar;
+export default CustomNavbar;
